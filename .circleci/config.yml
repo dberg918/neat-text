@@ -5,6 +5,7 @@ jobs:
   yarn-test:
     executor: node/default
     steps:
+      - checkout
       - node/install-packages:
           pkg-manager: yarn
       - run:
