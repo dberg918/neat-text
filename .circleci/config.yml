@@ -4,12 +4,12 @@ orbs:
 jobs:
   yarn-test:
     executor: node/default
-  steps:
-    - node/install-packages:
-      pkg-manager: yarn
-    - run:
-      command: yarn test
-      name: Run Yarn tests
+    steps:
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          command: yarn test
+          name: Run Yarn tests
 workflows:
   node-tests:
     jobs:
