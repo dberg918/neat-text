@@ -1,7 +1,16 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
+jobs:
+  yarn-test:
+    executor: node/default
+  steps:
+    - node/install-packages:
+      pkg-manager: yarn
+    - run:
+      command: yarn test
+      name: Run Yarn tests
 workflows:
   node-tests:
     jobs:
-      - node/test
+      - yarn-test
