@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <title>Neat Text Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="header">
+      <img src="face.png" />
+      <h1>David's Neat Text Generator</h1>
+    </div>
+
+    <p>Click the button below to get some neat text</p>
+
+    <button type="button">Get Neat Text</button>
+    <div id="click-container"></div>
+
+    <script type="text/javascript">
+      (function() {
+        const neatText = () => {
+          const p = document.createElement('p');
+          p.innerHTML = "Neat Text";
+          if (document.querySelector('#click-container').innerHTML == "") {
+            document.querySelector('#click-container').prepend(p);
+          }
+        }
+
+        const button = document.querySelector('button');
+        button.addEventListener('click', neatText);
+      })();
+    </script>
+  </body>
+</html>
