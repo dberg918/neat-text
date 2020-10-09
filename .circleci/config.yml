@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
+  heroku: circleci/heroku@1.2.2
 jobs:
   yarn-test:
     executor: node/default
@@ -11,7 +12,17 @@ jobs:
       - run:
           command: yarn test
           name: Run Yarn tests
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git
 workflows:
   node-tests:
     jobs:
       - yarn-test
+  test-deploy:
+    jobs:
+      - yarn-test
+      - deploy
